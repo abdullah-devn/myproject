@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>دورة التقنيات الحديثة — موريتانيا</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:'IBM Plex Sans Arabic',sans-serif;background:#0d1117;color:#e6edf3;overflow-x:hidden;line-height:1.6}
+:root{
+  --bg:#0d1117;--bg2:#161b22;--bg3:#1c2128;
+  --line:#21262d;--green:#39d353;--green2:#2ea043;
+  --green-dim:rgba(57,211,83,.08);--green-border:rgba(57,211,83,.2);
+  --text:#e6edf3;--muted:#8b949e;--muted2:#6e7681;
+  --wa:#25d366;--tg:#229ed9;
+}
+::-webkit-scrollbar{width:4px}
+/* SPINNER */
+.spinner{
+  width:32px;height:32px;border-radius:50%;
+  border:3px solid var(--line);
+  border-top-color:var(--green);
+  animation:spin .8s linear infinite;
+  margin:0 auto;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--line);border-radius:2px}
+
+/* NAV */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  height:52px;background:var(--bg);border-bottom:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;padding:0 16px;
+}
+.nav-logo{font-size:.95rem;font-weight:700;color:var(--green)}
+.nav-contact{display:flex;gap:8px}
+.nav-btn{
+  display:flex;align-items:center;gap:5px;
+  font-size:.72rem;font-weight:600;padding:6px 11px;border-radius:6px;
+  text-decoration:none;transition:opacity .2s;
+}
+.nav-btn:hover{opacity:.85}
+.nav-btn-tg{background:var(--tg);color:#fff}
+.nav-btn-wa{background:var(--wa);color:#fff}
+
+/* HERO */
+.hero{
+  min-height:100svh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:80px 16px 48px;text-align:center;
+  position:relative;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(57,211,83,.1) 0%,transparent 60%),var(--bg);
+}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(57,211,83,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(57,211,83,.03) 1px,transparent 1px);
+  background-size:56px 56px;
+}
+.hero-inner{position:relative;z-index:2;max-width:460px;width:100%}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--green-dim);border:1px solid var(--green-border);
+  color:var(--green);font-size:.7rem;font-weight:700;letter-spacing:.1em;
+  padding:5px 14px;border-radius:100px;text-transform:uppercase;margin-bottom:24px;
+}
+.tag-dot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:blink 1.4s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.hero h1{
+  font-size:clamp(1.8rem,7vw,3rem);font-weight:700;
+  color:var(--text);line-height:1.15;letter-spacing:-.02em;margin-bottom:14px;
+}
+.hero h1 span{color:var(--green)}
+.hero-sub{font-size:.88rem;color:var(--muted);line-height:1.75;margin-bottom:32px;font-weight:300}
+.hero-stats{
+  display:flex;justify-content:center;gap:0;
+  background:var(--bg2);border:1px solid var(--line);border-radius:10px;
+  overflow:hidden;margin-bottom:32px;
+}
+.hs{padding:14px 24px;text-align:center;position:relative}
+.hs:not(:last-child)::after{content:'';position:absolute;left:0;top:20%;bottom:20%;width:1px;background:var(--line)}
+.hs-val{font-size:1.3rem;font-weight:700;color:var(--green);display:block;line-height:1}
+.hs-lab{font-size:.68rem;color:var(--muted);margin-top:3px}
+.hero-cta{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  background:var(--green2);color:#fff;font-size:.9rem;font-weight:700;
+  padding:13px 28px;border-radius:8px;text-decoration:none;
+  transition:opacity .2s;box-shadow:0 4px 20px rgba(46,160,67,.3);
+  border:none;cursor:pointer;font-family:inherit;width:100%;
+}
+.hero-cta:hover{opacity:.88}
+
+/* SECTIONS */
+section{border-top:1px solid var(--line)}
+.sec-label{
+  padding:18px 16px 12px;
+  font-size:.68rem;font-weight:700;letter-spacing:.12em;
+  color:var(--muted2);text-transform:uppercase;
+  border-bottom:1px solid var(--line);
+}
+
+/* ABOUT */
+.about-row{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:14px 16px;border-bottom:1px solid var(--line);
+}
+.about-row:last-child{border-bottom:none}
+.ab-icon{
+  width:34px;height:34px;min-width:34px;border-radius:8px;
+  background:var(--bg2);border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;
+}
+.ab-icon svg{width:16px;height:16px;fill:none;stroke:var(--green);stroke-width:1.8}
+.ab-body h4{font-size:.85rem;font-weight:600;color:var(--text);margin-bottom:3px}
+.ab-body p{font-size:.78rem;color:var(--muted);line-height:1.6}
+
+/* MODULES */
+.mod-row{
+  display:flex;align-items:center;gap:12px;
+  padding:12px 16px;border-bottom:1px solid var(--line);
+}
+.mod-row:last-child{border-bottom:none}
+.mod-num{
+  width:26px;height:26px;min-width:26px;border-radius:6px;
+  background:var(--green-dim);border:1px solid var(--green-border);
+  font-size:.72rem;font-weight:700;color:var(--green);
+  display:flex;align-items:center;justify-content:center;
+}
+.mod-text h4{font-size:.85rem;font-weight:600;color:var(--text);margin-bottom:2px}
+.mod-text p{font-size:.75rem;color:var(--muted)}
+
+/* TIMELINE */
+.tl-item{
+  display:flex;gap:14px;padding:14px 16px;
+  border-bottom:1px solid var(--line);
+}
+.tl-item:last-child{border-bottom:none}
+.tl-left{display:flex;flex-direction:column;align-items:center;gap:0}
+.tl-dot{width:10px;height:10px;min-height:10px;border-radius:50%;background:var(--green);margin-top:4px}
+.tl-line{width:1px;background:var(--line);flex:1;margin-top:4px}
+.tl-item:last-child .tl-line{display:none}
+.tl-day{font-size:.68rem;font-weight:700;letter-spacing:.1em;color:var(--green);text-transform:uppercase;margin-bottom:3px}
+.tl-item h4{font-size:.85rem;font-weight:600;color:var(--text);margin-bottom:2px}
+.tl-item p{font-size:.75rem;color:var(--muted)}
+
+/* PAYMENT */
+.price-block{
+  padding:20px 16px;border-bottom:1px solid var(--line);
+}
+.price-label{font-size:.68rem;letter-spacing:.12em;color:var(--muted2);text-transform:uppercase;margin-bottom:6px}
+.price-amount{
+  font-size:2.4rem;font-weight:700;color:var(--text);
+  line-height:1;letter-spacing:-.03em;
+}
+.price-amount span{font-size:1rem;font-weight:400;color:var(--muted)}
+
+.bank-sec{padding:16px;border-bottom:1px solid var(--line)}
+.bank-sec-label{font-size:.72rem;font-weight:600;color:var(--muted);margin-bottom:10px}
+.bank-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.bank-tab{
+  padding:7px 14px;border-radius:6px;
+  border:1px solid var(--line);background:var(--bg2);
+  color:var(--muted2);font-size:.78rem;font-weight:600;
+  cursor:pointer;transition:all .15s;font-family:inherit;
+}
+.bank-tab.active{background:var(--green2);color:#fff;border-color:var(--green2)}
+.acc-box{
+  background:var(--bg2);border:1px solid var(--line);
+  border-radius:8px;padding:14px 16px;
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+}
+.acc-val{font-size:1.3rem;font-weight:700;color:var(--green);letter-spacing:.08em;font-variant-numeric:tabular-nums}
+.acc-bank{font-size:.72rem;color:var(--muted);margin-top:3px}
+.copy-btn{
+  background:var(--bg3);border:1px solid var(--line);
+  color:var(--muted2);font-size:.7rem;font-weight:700;
+  padding:6px 12px;border-radius:6px;cursor:pointer;
+  font-family:inherit;transition:all .15s;white-space:nowrap;
+}
+.copy-btn:hover{border-color:var(--green);color:var(--green)}
+
+/* REGISTRATION FORM */
+.form-sec{padding:16px}
+.form-title{font-size:.88rem;font-weight:700;color:var(--text);margin-bottom:16px}
+.f-group{margin-bottom:14px}
+.f-label{
+  display:block;font-size:.68rem;font-weight:700;
+  letter-spacing:.1em;color:var(--muted2);text-transform:uppercase;margin-bottom:6px;
+}
+.f-input{
+  width:100%;background:var(--bg2);border:1px solid var(--line);
+  border-radius:8px;color:var(--text);font-size:.88rem;
+  padding:11px 14px;transition:border-color .2s;
+  direction:rtl;font-family:inherit;
+}
+.f-input:focus{border-color:var(--green);outline:none}
+.f-input::placeholder{color:var(--muted2)}
+select.f-input option{background:var(--bg2)}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+.upload-zone{
+  border:1.5px dashed var(--line);border-radius:8px;
+  padding:24px 16px;text-align:center;cursor:pointer;
+  transition:border-color .2s,background .2s;position:relative;
+}
+.upload-zone:hover{border-color:var(--green);background:var(--green-dim)}
+.upload-zone input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.uz-icon{
+  width:36px;height:36px;border-radius:8px;
+  background:var(--bg3);border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;margin:0 auto 10px;
+}
+.uz-icon svg{width:18px;height:18px;fill:none;stroke:var(--green);stroke-width:1.8}
+.uz-title{font-size:.82rem;font-weight:600;color:var(--green);margin-bottom:3px}
+.uz-sub{font-size:.72rem;color:var(--muted)}
+.file-chosen{font-size:.75rem;color:var(--green);margin-top:8px;min-height:16px}
+
+/* SEND BUTTONS */
+.send-btns{display:flex;flex-direction:column;gap:8px;margin-top:16px}
+.send-btn{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  font-size:.88rem;font-weight:700;padding:13px;border-radius:8px;
+  border:none;cursor:pointer;font-family:inherit;transition:opacity .2s;
+}
+.send-btn:hover{opacity:.85}
+.send-btn-tg{background:var(--tg);color:#fff}
+.send-btn-wa{background:var(--wa);color:#fff}
+.send-btn svg{width:16px;height:16px}
+.form-hint{font-size:.72rem;color:var(--muted2);text-align:center;margin-top:10px;line-height:1.6}
+.form-hint strong{color:var(--green)}
+
+/* SUCCESS */
+.success-screen{
+  display:none;padding:40px 16px;text-align:center;
+}
+.success-screen.show{display:block}
+.check-wrap{
+  width:56px;height:56px;border-radius:50%;
+  background:var(--green-dim);border:2px solid var(--green);
+  display:flex;align-items:center;justify-content:center;margin:0 auto 20px;
+}
+.check-wrap svg{width:26px;height:26px;fill:none;stroke:var(--green);stroke-width:2.5}
+.success-screen h3{font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:8px}
+.success-screen p{font-size:.82rem;color:var(--muted);line-height:1.7;margin-bottom:24px}
+.contact-btns{display:flex;flex-direction:column;gap:8px}
+.c-btn{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  font-size:.85rem;font-weight:700;padding:12px;border-radius:8px;
+  text-decoration:none;transition:opacity .2s;
+}
+.c-btn:hover{opacity:.85}
+.c-btn-tg{background:var(--tg);color:#fff}
+.c-btn-wa{background:var(--wa);color:#fff}
+
+/* FOOTER */
+footer{
+  border-top:1px solid var(--line);padding:24px 16px;
+  text-align:center;font-size:.75rem;color:var(--muted2);
+}
+footer strong{color:var(--green)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">دورة التقنيات</div>
+  <div class="nav-contact">
+    <a href="https://t.me/ARVOShs" target="_blank" class="nav-btn nav-btn-tg">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+      تلجرام
+    </a>
+    <a href="https://wa.me/36521223" target="_blank" class="nav-btn nav-btn-wa">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      واتساب
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="border:none">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-tag"><span class="tag-dot"></span>نواكشوط · موريتانيا</div>
+    <h1>أتقن <span>التقنية</span><br>في عشرة أيام</h1>
+    <p class="hero-sub">ستة مسارات تقنية متكاملة بشرح عربي مفصل، تطبيق عملي، ومشروع حقيقي في نهاية كل مسار.</p>
+    <div class="hero-stats">
+      <div class="hs"><span class="hs-val count-num" data-target="10">0</span><div class="hs-lab">أيام</div></div>
+      <div class="hs"><span class="hs-val count-num" data-target="6">0</span><div class="hs-lab">مسارات</div></div>
+      <div class="hs"><span class="hs-val count-num" data-target="40">0</span><div class="hs-lab">درساً</div></div>
+    </div>
+    <a href="#register" class="hero-cta">احجز مكانك الآن</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sec-label">عن الدورة</div>
+  <div class="about-row">
+    <div class="ab-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+    <div class="ab-body">
+      <h4>10 أيام مكثفة</h4>
+      <p>جلستان يومياً بأسلوب مركّز — تنتهي بمهارة حقيقية وليس شهادة فارغة.</p>
+    </div>
+  </div>
+  <div class="about-row">
+    <div class="ab-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+    <div class="ab-body">
+      <h4>للمبتدئين تماماً</h4>
+      <p>لا يشترط أي خبرة سابقة. كل شيء يُشرح من الصفر بالعربية.</p>
+    </div>
+  </div>
+  <div class="about-row">
+    <div class="ab-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+    <div class="ab-body">
+      <h4>عن بُعد من أي مكان</h4>
+      <p>تتابع الدورة على منصة مِهارة من هاتفك أينما كنت. مجموعة تلجرام خاصة لجمع المشتركين والتواصل.</p>
+    </div>
+  </div>
+  <div class="about-row">
+    <div class="ab-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+    <div class="ab-body">
+      <h4>شهادة ختامية</h4>
+      <p>أكمل مسارك وابنِ مشروعك النهائي — تحصل على شهادة يمكن إرفاقها مع سيرتك الذاتية.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MODULES -->
+<section id="modules">
+  <div class="sec-label">المسارات الستة</div>
+  <div class="mod-row">
+    <div class="mod-num">01</div>
+    <div class="mod-text"><h4>إنشاء المواقع الإلكترونية</h4><p>HTML · CSS · JavaScript · نشر على الإنترنت</p></div>
+  </div>
+  <div class="mod-row">
+    <div class="mod-num">02</div>
+    <div class="mod-text"><h4>برمجة تطبيقات الهواتف</h4><p>React Native · من الفكرة إلى التطبيق</p></div>
+  </div>
+  <div class="mod-row">
+    <div class="mod-num">03</div>
+    <div class="mod-text"><h4>الأمن السيبراني</h4><p>حماية الأنظمة · الشبكات · Linux</p></div>
+  </div>
+  <div class="mod-row">
+    <div class="mod-num">04</div>
+    <div class="mod-text"><h4>الاختراق الأخلاقي</h4><p>OSINT · Metasploit · تقارير احترافية</p></div>
+  </div>
+  <div class="mod-row">
+    <div class="mod-num">05</div>
+    <div class="mod-text"><h4>صنع البوتات الذكية</h4><p>بوتات تلجرام · Python · أتمتة كاملة</p></div>
+  </div>
+  <div class="mod-row">
+    <div class="mod-num">06</div>
+    <div class="mod-text"><h4>أدوات الذكاء الاصطناعي</h4><p>Claude · Prompt Engineering · مشاريع حقيقية</p></div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="sec-label">الجدول الزمني</div>
+  <div class="tl-item">
+    <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+    <div><div class="tl-day">اليوم 1 — 2</div><h4>إنشاء المواقع</h4><p>من الصفر إلى موقع منشور على الإنترنت</p></div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+    <div><div class="tl-day">اليوم 3 — 4</div><h4>تطبيقات الهواتف</h4><p>بناء تطبيقك الأول وعرضه</p></div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+    <div><div class="tl-day">اليوم 5 — 6</div><h4>الأمن والاختراق الأخلاقي</h4><p>الحماية والأدوات والممارسة العملية</p></div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+    <div><div class="tl-day">اليوم 7 — 8</div><h4>البوتات الذكية</h4><p>بوت تلجرام حقيقي من الصفر للنهاية</p></div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-left"><div class="tl-dot"></div></div>
+    <div><div class="tl-day">اليوم 9 — 10</div><h4>الذكاء الاصطناعي + مشروع ختامي</h4><p>توحيد كل ما تعلمته في مشروع حقيقي تنشره</p></div>
+  </div>
+</section>
+
+<!-- PAYMENT -->
+<section id="payment">
+  <div class="sec-label">الرسوم والدفع</div>
+
+  <div class="price-block">
+    <div class="price-label">رسوم الدورة</div>
+    <div class="price-amount">500 <span>أوقية جديدة</span></div>
+  </div>
+
+  <div class="bank-sec">
+    <div class="bank-sec-label">اختر طريقة الدفع لعرض رقم الحساب</div>
+    <div class="bank-tabs">
+      <button class="bank-tab active" data-bank="بنكيلي" onclick="selectBank(this)">بنكيلي</button>
+      <button class="bank-tab" data-bank="مصرفي" onclick="selectBank(this)">مصرفي</button>
+      <button class="bank-tab" data-bank="كليك" onclick="selectBank(this)">كليك</button>
+    </div>
+    <div class="acc-box">
+      <div>
+        <div class="acc-val" id="acc-num">26521223</div>
+        <div class="acc-bank" id="acc-bank">بنكيلي</div>
+      </div>
+      <button class="copy-btn" onclick="copyAcc()">نسخ</button>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTRATION -->
+<section id="register">
+  <div class="sec-label">التسجيل</div>
+
+  <div class="form-sec" id="form-wrap">
+    <p class="form-title">بيانات التسجيل</p>
+
+    <div class="f-row">
+      <div class="f-group">
+        <label class="f-label" for="f-name">الاسم الكامل</label>
+        <input class="f-input" type="text" id="f-name" placeholder="اسمك الكامل" required>
+      </div>
+      <div class="f-group">
+        <label class="f-label" for="f-phone">رقم الواتساب</label>
+        <input class="f-input" type="tel" id="f-phone" placeholder="22222222" required>
+      </div>
+    </div>
+
+    <div class="f-row">
+      <div class="f-group">
+        <label class="f-label" for="f-wilaya">الولاية</label>
+        <select class="f-input" id="f-wilaya" required>
+          <option value="">اختر</option>
+          <option>نواكشوط الغربية</option>
+          <option>نواكشوط الشمالية</option>
+          <option>نواكشوط الجنوبية</option>
+          <option>نواذيبو</option>
+          <option>تيرس زمور</option>
+          <option>إينشيري</option>
+          <option>أدرار</option>
+          <option>تكانت</option>
+          <option>الحوض الشرقي</option>
+          <option>الحوض الغربي</option>
+          <option>العصابة</option>
+          <option>البراكنة</option>
+          <option>الترارزة</option>
+          <option>كوركول</option>
+          <option>داخلت نواذيبو</option>
+          <option>أخرى</option>
+        </select>
+      </div>
+      <div class="f-group">
+        <label class="f-label" for="f-bank">طريقة الدفع</label>
+        <select class="f-input" id="f-bank" required>
+          <option value="">اختر</option>
+          <option>بنكيلي</option>
+          <option>مصرفي</option>
+          <option>كليك</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="f-group">
+      <label class="f-label">صورة إيصال الدفع</label>
+      <label class="upload-zone">
+        <input type="file" id="f-receipt" accept="image/*,.pdf">
+        <div class="uz-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        </div>
+        <div class="uz-title">ارفع صورة الإيصال</div>
+        <div class="uz-sub">PNG · JPG · PDF</div>
+      </label>
+      <div class="file-chosen" id="file-chosen"></div>
+    </div>
+
+    <div class="f-group">
+      <label class="f-label" for="f-notes">ملاحظة (اختياري)</label>
+      <textarea class="f-input" id="f-notes" rows="2" placeholder="أي استفسار تريد إضافته"></textarea>
+    </div>
+
+    <!-- VERIFY BOX -->
+    <div id="verify-box" style="display:none;margin-top:16px">
+      <div style="background:var(--bg2);border:1px solid var(--line);border-radius:8px;padding:16px;text-align:center">
+        <div id="verify-spinner" style="margin-bottom:12px">
+          <div class="spinner"></div>
+        </div>
+        <div id="verify-status" style="font-size:.82rem;color:var(--muted);line-height:1.65"></div>
+      </div>
+    </div>
+
+    <button class="send-btn" id="submit-btn" onclick="submitForm()" style="margin-top:16px;background:var(--green2);color:#fff;width:100%">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" width="16" height="16"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      تحقق من الدفع وادخل المنصة
+    </button>
+
+    <p class="form-hint">
+      سيتم التحقق من إيصال الدفع تلقائياً خلال ثوانٍ.<br>
+      للاستفسار: <strong>@ARVOShs</strong>
+    </p>
+  </div>
+
+  <!-- SUCCESS -->
+  <div class="success-screen" id="success-screen">
+    <div class="check-wrap">
+      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <h3>تم التحقق بنجاح</h3>
+    <p>مرحباً بك في دورة التقنيات الحديثة.<br>اضغط الزر أدناه للدخول إلى منصة مِهارة.</p>
+    <a href="https://abdullah-devn.github.io/mahara" target="_blank" class="c-btn" style="background:var(--green2);color:#fff;display:flex;align-items:center;justify-content:center;gap:8px;padding:14px;border-radius:8px;text-decoration:none;font-weight:700;font-size:.9rem">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      ادخل منصة مِهارة الآن
+    </a>
+  </div>
+
+  <!-- REJECT -->
+  <div id="reject-screen" style="display:none;padding:32px 16px;text-align:center">
+    <div style="width:52px;height:52px;border-radius:50%;background:rgba(248,113,113,.1);border:2px solid #f87171;display:flex;align-items:center;justify-content:center;margin:0 auto 16px">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </div>
+    <h3 style="font-size:1rem;font-weight:700;color:var(--text);margin-bottom:8px">لم يتم قبول الإيصال</h3>
+    <p id="reject-reason" style="font-size:.82rem;color:var(--muted);line-height:1.7;margin-bottom:20px"></p>
+    <button onclick="resetForm()" style="background:var(--bg2);border:1px solid var(--line);color:var(--muted2);font-size:.82rem;font-weight:600;padding:10px 20px;border-radius:8px;cursor:pointer;font-family:inherit">
+      حاول مجدداً
+    </button>
+  </div>
+</section>
+
+<footer>
+  <p>دورة التقنيات الحديثة · موريتانيا · <strong>@ARVOShs</strong></p>
+</footer>
+
+<script>
+const API_KEY = 'YOUR_KEY_HERE';
+const REQUIRED_AMOUNT = 500;
+const WINDOW_MINUTES = 40; // ±20 min
+
+let selBank = 'بنكيلي';
+function selectBank(el){
+  document.querySelectorAll('.bank-tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  selBank = el.dataset.bank;
+  document.getElementById('acc-num').textContent = '26521223';
+  document.getElementById('acc-bank').textContent = selBank;
+  const sel = document.getElementById('f-bank');
+  for(let i=0;i<sel.options.length;i++){
+    if(sel.options[i].text===selBank){sel.selectedIndex=i;break;}
+  }
+}
+
+function copyAcc(){
+  navigator.clipboard.writeText('26521223').then(()=>{
+    const btn=document.querySelector('.copy-btn');
+    btn.textContent='تم';
+    setTimeout(()=>{btn.textContent='نسخ'},2000);
+  });
+}
+
+document.getElementById('f-receipt').addEventListener('change',function(){
+  document.getElementById('file-chosen').textContent = this.files[0] ? 'تم اختيار: '+this.files[0].name : '';
+});
+
+function setStatus(msg){ document.getElementById('verify-status').textContent = msg; }
+
+function resetForm(){
+  document.getElementById('reject-screen').style.display='none';
+  document.getElementById('form-wrap').style.display='block';
+  document.getElementById('submit-btn').disabled = false;
+}
+
+async function submitForm(){
+  const name  = document.getElementById('f-name').value.trim();
+  const phone = document.getElementById('f-phone').value.trim();
+  const wilaya= document.getElementById('f-wilaya').value;
+  const bank  = document.getElementById('f-bank').value;
+  const file  = document.getElementById('f-receipt').files[0];
+
+  if(!name||!phone||!wilaya||!bank){ alert('يرجى تعبئة جميع الحقول المطلوبة.'); return; }
+  if(!file){ alert('يرجى رفع صورة إيصال الدفع.'); return; }
+
+  // Show verify box
+  document.getElementById('submit-btn').disabled = true;
+  document.getElementById('verify-box').style.display='block';
+  setStatus('جاري قراءة الإيصال...');
+
+  // Convert image to base64
+  const base64 = await new Promise((res,rej)=>{
+    const r = new FileReader();
+    r.onload = ()=> res(r.result.split(',')[1]);
+    r.onerror = ()=> rej();
+    r.readAsDataURL(file);
+  });
+
+  const mediaType = file.type || 'image/jpeg';
+  const nowStr = new Date().toLocaleString('ar-SA', {
+    year:'numeric', month:'long', day:'numeric',
+    hour:'2-digit', minute:'2-digit', timeZone:'Africa/Nouakchott'
+  });
+
+  const prompt = `أنت نظام تحقق تلقائي من إيصالات الدفع.
+الوقت الحالي الآن هو: ${nowStr}
+المبلغ المطلوب: ${REQUIRED_AMOUNT} أوقية موريتانية جديدة
+نافذة القبول: الإيصال يجب أن يكون بتاريخ لا يتجاوز ${WINDOW_MINUTES / 2} دقيقة قبل أو بعد الوقت الحالي.
+
+افحص الصورة المرفقة وأجب بـ JSON فقط بهذا الشكل بدون أي نص إضافي:
+{"accepted": true/false, "reason": "سبب القبول أو الرفض بالعربية", "amount_found": "المبلغ الذي وجدته في الإيصال", "date_found": "التاريخ والوقت الذي وجدته في الإيصال"}
+
+قواعد الرفض:
+- إذا لم يكن المبلغ ${REQUIRED_AMOUNT} أوقية رفض
+- إذا كان تاريخ الإيصال أقدم من ${WINDOW_MINUTES / 2} دقيقة رفض
+- إذا كان تاريخ الإيصال في المستقبل بأكثر من ${WINDOW_MINUTES / 2} دقيقة رفض
+- إذا لم تستطع قراءة الصورة رفض`;
+
+  try {
+    setStatus('جاري التحقق من المبلغ والتاريخ...');
+
+    const resp = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': API_KEY,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
+      body: JSON.stringify({
+        model: 'claude-opus-4-5',
+        max_tokens: 300,
+        messages: [{
+          role: 'user',
+          content: [
+            { type: 'image', source: { type: 'base64', media_type: mediaType, data: base64 } },
+            { type: 'text', text: prompt }
+          ]
+        }]
+      })
+    });
+
+    const data = await resp.json();
+    const raw = data.content[0].text.trim();
+
+    let result;
+    try {
+      const jsonStr = raw.replace(/```json|```/g,'').trim();
+      result = JSON.parse(jsonStr);
+    } catch(e) {
+      throw new Error('لم نتمكن من قراءة الإيصال. يرجى رفع صورة واضحة.');
+    }
+
+    document.getElementById('verify-box').style.display='none';
+
+    if(result.accepted){
+      document.getElementById('form-wrap').style.display='none';
+      document.getElementById('success-screen').classList.add('show');
+      document.getElementById('success-screen').scrollIntoView({behavior:'smooth',block:'center'});
+    } else {
+      document.getElementById('form-wrap').style.display='none';
+      document.getElementById('reject-screen').style.display='block';
+      document.getElementById('reject-reason').textContent = result.reason || 'لم يتم قبول الإيصال.';
+      document.getElementById('reject-screen').scrollIntoView({behavior:'smooth',block:'center'});
+    }
+
+  } catch(err) {
+    document.getElementById('verify-box').style.display='none';
+    document.getElementById('submit-btn').disabled = false;
+    alert('حدث خطأ: ' + err.message);
+  }
+}
+
+// counter animation
+window.addEventListener('load',()=>{
+  document.querySelectorAll('.count-num').forEach(el=>{
+    const target = +el.dataset.target;
+    const steps = 50; const dur = 1600;
+    let step = 0;
+    const ease = t => 1-Math.pow(1-t,3);
+    const timer = setInterval(()=>{
+      step++;
+      const jitter = step < steps ? Math.floor(Math.random()*target*.3) : 0;
+      el.textContent = Math.round(ease(step/steps)*target) + jitter;
+      if(step>=steps){clearInterval(timer);el.textContent=target}
+    }, dur/steps);
+  });
+});
+</script>
+</body>
+</html>
